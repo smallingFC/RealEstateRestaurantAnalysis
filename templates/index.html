@@ -1,0 +1,553 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head >
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>location for new business</title>
+
+
+    <link rel="stylesheet" href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.cs' %}">
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+<style>
+    body{
+        fill-opacity: unset;
+        background-image: url("{% static 'images/homepage.jpg'%}");
+        background-repeat: no-repeat;
+        
+    }
+    label{
+        width: 50%;
+        display: inline;
+        padding: 2px 2px;
+        
+        box-sizing: border-box;
+      }
+      
+      
+      
+</style>
+<body >
+    
+
+
+<header>
+
+    <a href="#" class="logo"><span>Location for </span>New Business</a>
+
+    <nav class="navbar">
+        <a href="#home">home</a>
+        <a href="#services">services</a>
+        <a href="#featured">featured</a>
+        
+        <a href="#contact">contact</a>
+        
+    </nav>
+
+    <div class="icons">
+        <div id="menu-bars" class="fas fa-bars"></div>
+        <a href="" class="fas fa-heart"></a>
+        <a href="" class="fas fa-user" class="btn"></a>
+    </div>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+  
+    
+   
+    <form action="" method='POST'>
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+        <h3>Welcome {{user.first_name}}</h3>
+        {% endif %}
+        <div class="buttons-container">
+            <a href="#" class="btn">for rent</a>
+            <a href="#" class="btn">for buy</a>
+        </div>
+
+        <div class="inputBox">
+            <label for="city"><h1>City:</h1></label>
+            <input type="search" name="city" id="" required >
+            <label for="Address" ><h1>Locality:</h1></label>
+            <input type="text" name="Address"  id="Address" required >
+            <label for="superarea" ><h1>Super Area:</h1> </label><br>
+            <input type="number" name="superarea" placeholder="in sqft" id="superarea" required min="0" > 
+            <label for="ppsqft" ><h1>Price: </h1></label>
+            <input type="number" name="ppsqft" placeholder="per sqft" id="ppsqft" required min="0" >
+            <label for="carpetarea" ><h1>Carpet Area: </h1></label>
+            <input type="number" name="carpetarea" placeholder="in sqft" id="carpetarea" required min="0" > 
+            <select name="" id="">
+                <option value="" disabled hidden selected>property status</option>
+                <option value="Ready To Move">Ready To Move</option>
+                <option value="under construction">under construction</option>
+                <option value="furnished">furnished</option>
+                <option value="semi-furnished">semi-furnished</option>
+                <option value="unfurnished">unfurnished</option>
+            </select>
+            
+           
+            
+            
+            
+           
+        </div>
+
+        <input type="submit" value="Find rent" class="btn">
+        {% if result %}
+        <h1>your predicted rent is ₹{{result}}</h1>
+        
+        
+    {% endif %}
+
+
+    </form>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- services section starts  -->
+
+<section class="services" id="services">
+
+    <h1 class="heading"> our <span>services</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            
+            <h3>Searching property for renting</h3>
+            <p>To search/filter properties to rent from our vast database according to your liking.</p>
+            <a href="{% url 'properties' %}" class="btn">learn more</a>
+        </div>
+
+        <div class="box">
+           
+            <h3>Restaurant Analysis</h3>
+            <p>Most unique feature that singles us out from the rest, this provides graphs and tables to give you the best possible analysis of where to open your new restaurant.</p>
+            <a href="{% url 'analysis' %}" class="btn">learn more</a>
+        </div>
+
+        <div class="box">
+            
+            <h3>Searching property for buying</h3>
+            <p>To search/filter properties to buy from our vast database according to your liking.</p>
+            <a href="{% url 'sell'%}" class="btn">learn more</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- services section ends -->
+
+<!-- featured section starts  -->
+
+<section class="featured" id="featured">
+
+    <h1 class="heading"> <span>Featured</span> properties </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <div class="image-container">
+                <img src="{% static 'images/amazing-homes-lokhandwala.jpg' %}" alt="">
+                <div class="info">
+                    <h3>3 days ago</h3>
+                    <h3>for rent</h3>
+                </div>
+                <div class="icons">
+                    
+                </div>
+            </div>
+            <div class="content">
+                <div class="price">
+                    <h3>₹95,000/mo</h3>
+                    
+                </div>
+                <div class="location">
+                    <h3>Oberoi Sky Gardens</h3>
+                    <p>Lokhandwala, Andheri West, Mumbai, India - 400053</p>
+                </div>
+                <div class="details">
+                    <h3> <i class="fas fa-expand"></i> 1500 sqft </h3>
+                    <h3> <i class="fas fa-bed"></i> 3 beds </h3>
+                    <h3> <i class="fas fa-bath"></i> 2 baths </h3>
+                </div>
+                <div class="buttons">
+                    <a href="#" class="btn">request info</a>
+                    <a href="https://yashw337.wixsite.com/website-1" class="btn">view details</a>
+                </div>
+            </div>
+        </div>
+
+
+       
+        <div class="box">
+            <div class="image-container">
+                <img src="{% static 'images/thirdhouse.jpg' %}" alt="">
+                <div class="info">
+                    <h3>7 days ago</h3>
+                    <h3>for rent</h3>
+                </div>
+                <div class="icons">
+                    
+                </div>
+            </div>
+            <div class="content">
+                <div class="price">
+                    <h3>₹75,000/mo</h3>
+                    
+                </div>
+                <div class="location">
+                    <h3>Modern Towers</h3>
+                    <p>Chakala, Andheri East, Mumbai, India - 400093</p>
+                </div>
+                <div class="details">
+                    <h3> <i class="fas fa-expand"></i> 2600 sqft </h3>
+                    <h3> <i class="fas fa-bed"></i> 4 beds </h3>
+                    <h3> <i class="fas fa-bath"></i> 3 baths </h3>
+                </div>
+                <div class="buttons">
+                    <a href="#" class="btn">request info</a>
+                    <a href="https://yashw337.wixsite.com/website-1" class="btn">view details</a>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="image-container">
+                <img src="{% static 'images/4thhouse.jpg' %}" alt="">
+                <div class="info">
+                    <h3>1 day ago</h3>
+                    <h3>for rent</h3>
+                </div>
+                <div class="icons">
+                    
+                </div>
+            </div>
+            <div class="content">
+                <div class="price">
+                    <h3>₹82,000/mo</h3>
+                    
+                </div>
+                <div class="location">
+                    <h3>Oberoi Sky Heights</h3>
+                    <p>Lokhandwala, Andheri West, Mumbai, India - 400053</p>
+                </div>
+                <div class="details">
+                    <h3> <i class="fas fa-expand"></i> 1100 sqft </h3>
+                    <h3> <i class="fas fa-bed"></i> 3 beds </h3>
+                    <h3> <i class="fas fa-bath"></i> 2 baths </h3>
+                </div>
+                <div class="buttons">
+                    <a href="#" class="btn">request info</a>
+                    <a href="https://yashw337.wixsite.com/website-1" class="btn">view details</a>
+                </div>
+            </div>
+        </div>
+        
+
+        
+        <div class="box">
+            <div class="image-container">
+                <img src="{% static 'images/7house.jpeg' %}" alt="">
+                <div class="info">
+                    <h3>13 days ago</h3>
+                    <h3>for rent</h3>
+                </div>
+                <div class="icons">
+                    
+                </div>
+            </div>
+            <div class="content">
+                <div class="price">
+                    <h3>₹1,12,000/mo</h3>
+                    
+                </div>
+                <div class="location">
+                    <h3>Premiere Heights</h3>
+                    <p>Colaba, Mumbai, India - 400005</p>
+                </div>
+                <div class="details">
+                    <h3> <i class="fas fa-expand"></i> 800 sqft </h3>
+                    <h3> <i class="fas fa-bed"></i> 2 beds </h3>
+                    <h3> <i class="fas fa-bath"></i> 2 baths </h3>
+                </div>
+                <div class="buttons">
+                    <a href="#" class="btn">request info</a>
+                    <a href="https://yashw337.wixsite.com/website-1" class="btn">view details</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image-container">
+                <img src="{% static 'images/2nd.jpg' %}" alt="">
+                <div class="info">
+                    <h3>13 days ago</h3>
+                    <h3>for rent</h3>
+                </div>
+                <div class="icons">
+                    
+                </div>
+            </div>
+            <div class="content">
+                <div class="price">
+                    <h3>₹70,000/mo</h3>
+                    
+                </div>
+                <div class="location">
+                    <h3>Juhu Aakash</h3>
+                    <p>Gulmohar road, Mumbai, India - 400056</p>
+                </div>
+                <div class="details">
+                    <h3> <i class="fas fa-expand"></i> 600 sqft </h3>
+                    <h3> <i class="fas fa-bed"></i> 2 beds </h3>
+                    <h3> <i class="fas fa-bath"></i> 1 baths </h3>
+                </div>
+                <div class="buttons">
+                    <a href="#" class="btn">request info</a>
+                    <a href="https://yashw337.wixsite.com/website-1" class="btn">view details</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image-container">
+                <img src="{% static 'images/max.jpg' %}" alt="">
+                <div class="info">
+                    <h3>17 days ago</h3>
+                    <h3>for rent</h3>
+                </div>
+                <div class="icons">
+                    
+                </div>
+            </div>
+            <div class="content">
+                <div class="price">
+                    <h3>₹76,000/mo</h3>
+                    
+                </div>
+                <div class="location">
+                    <h3>Tarapore Gardens</h3>
+                    <p>Oshiwara, Mumbai, India - 400054</p>
+                </div>
+                <div class="details">
+                    <h3> <i class="fas fa-expand"></i> 1200 sqft </h3>
+                    <h3> <i class="fas fa-bed"></i> 3 beds </h3>
+                    <h3> <i class="fas fa-bath"></i> 3 baths </h3>
+                </div>
+                <div class="buttons">
+                    <a href="#" class="btn">request info</a>
+                    <a href="https://yashw337.wixsite.com/website-1" class="btn">view details</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image-container">
+                <img src="{% static 'images/please.jpg' %}" alt="">
+                <div class="info">
+                    <h3>11 days ago</h3>
+                    <h3>for rent</h3>
+                </div>
+                <div class="icons">
+                    
+                </div>
+            </div>
+            <div class="content">
+                <div class="price">
+                    <h3>₹51,000/mo</h3>
+                    
+                </div>
+                <div class="location">
+                    <h3>Royal Empire</h3>
+                    <p>Goregaon West, Mumbai, India - 400063</p>
+                </div>
+                <div class="details">
+                    <h3> <i class="fas fa-expand"></i> 900 sqft </h3>
+                    <h3> <i class="fas fa-bed"></i> 2 beds </h3>
+                    <h3> <i class="fas fa-bath"></i> 1 baths </h3>
+                </div>
+                <div class="buttons">
+                    <a href="#" class="btn">request info</a>
+                    <a href="https://yashw337.wixsite.com/website-1" class="btn">view details</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image-container">
+                <img src="{% static 'images/left.jpg' %}" alt="">
+                <div class="info">
+                    <h3>3 days ago</h3>
+                    <h3>for rent</h3>
+                </div>
+                <div class="icons">
+                    
+                </div>
+            </div>
+            <div class="content">
+                <div class="price">
+                    <h3>₹82,000/mo</h3>
+                    
+                </div>
+                <div class="location">
+                    <h3>Runwal Elegance</h3>
+                    <p>Swami Samarth Nagar, Mumbai, India - 400053</p>
+                </div>
+                <div class="details">
+                    <h3> <i class="fas fa-expand"></i> 1800 sqft </h3>
+                    <h3> <i class="fas fa-bed"></i> 5 beds </h3>
+                    <h3> <i class="fas fa-bath"></i> 4 baths </h3>
+                </div>
+                <div class="buttons">
+                    <a href="#" class="btn">request info</a>
+                    <a href="https://yashw337.wixsite.com/website-1" class="btn">view details</a>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+    
+</section>
+
+<!-- featured section ends -->
+
+<!-- agents section starts  -->
+
+
+
+<!-- contact section starts  -->
+
+<section class="contact" id="contact">
+
+<h1 class="heading"> <span>contact</span> us </h1>
+
+<div class="icons-container">
+
+    <div class="icons">
+        <img src="images/icon-1.png" alt="">
+        <h3>phone number</h3>
+        <p>+91 9870204225</p>
+        <p>+91 9821013769</p>
+    </div>
+
+    <div class="icons">
+        <img src="images/icon-2.png" alt="">
+        <h3>email address</h3>
+        <p>sohamdesai22@gmail.com</p>
+        <p>shlokasher@gmail.com</p>
+    </div>
+
+     <div class="icons">
+        <img src="images/icon-3.png" alt="">
+        <h3>office address</h3>
+        <p>503, Sterling Tower, Lokhandwala, Andheri West, Mumbai, India - 400053</p>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <form action="">
+        <div class="inputBox">
+            <input type="text" placeholder="name">
+            <input type="number" placeholder="number">
+        </div>
+        <div class="inputBox">
+            <input type="email" placeholder="email">
+            <input type="text" placeholder="subject">
+        </div>
+        <textarea name="" placeholder="message" id="" cols="30" rows="10"></textarea>
+        <input type="submit" value="send message" class="btn">
+    </form>
+
+    <!-- <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30153.788252261566!2d72.82321484621745!3d19.141690214227783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b63aceef0c69%3A0x2aa80cf2287dfa3b!2sJogeshwari%20West%2C%20Mumbai%2C%20Maharashtra%20400047!5e0!3m2!1sen!2sin!4v1626697480414!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe> -->
+
+</div>
+
+</section>
+
+<!-- contact section ends -->
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="footer-container">
+
+        <div class="box-container">
+
+            <!-- <div class="box">
+                <h3>branch location</h3>
+                <a href="#">india</a>
+                <a href="#">USA</a>
+                <a href="#">france</a>
+                <a href="#">russia</a>
+                <a href="#">japan</a>
+            </div>  -->
+            
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="{% url 'index' %}">home</a>
+                <a href="#">services</a>
+                <a href="#">featured</a>
+                
+                <a href="#">contact</a>
+            </div> 
+
+            
+
+            <!-- <div class="box">
+                <h3>follow us</h3>
+                <a href="https://www.facebook.com/">facebook</a>
+                <a href="#">twitter</a>
+                <a href="#">instagram</a>
+                <a href="#">linkedin</a>
+            </div>  -->
+
+        </div>
+
+        <div class="credit">created by <span> The Team </span> | all rights reserved! </div>
+
+    </div>
+
+</section>
+
+<!-- footer section ends -->
+
+
+<!-- javascript part  -->
+<script>
+
+let menu = document.querySelector('#menu-bars');
+let navbar = document.querySelector('.navbar');
+
+menu.onclick = () =>{
+    navbar.classList.toggle('active');
+    menu.classList.toggle('fa-times');
+}
+
+window.onscroll = () =>{
+    navbar.classList.remove('active');
+    menu.classList.remove('fa-times');
+}
+
+
+</script>
+
+</body>
+</html>

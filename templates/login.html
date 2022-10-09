@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+</head>
+<style>
+    body{
+        fill-opacity: unset;
+        background-image: url("{% static 'images/login.jpg'%}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: 100%;
+    }
+    .contain{
+        width: 35%;
+        height: 80%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border: 6px solid;
+        border-color: red;
+        text-align: center;
+        margin: auto;
+        margin-top: 30px;
+        background-color: white;
+    }
+    header{
+        text-align: center;
+        font-size: xx-large;
+        font-family:'Trebuchet MS', sans-serif;
+        color:red;
+    }
+input[type=submit] {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+ font-size: 16px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+font-family:'Trebuchet MS', sans-serif;
+}
+input[type=text], [type=password] {
+  border: 2px solid red;
+  border-radius: 8px;
+}
+label {font-family:'Trebuchet MS', sans-serif;color: red;}
+
+.button {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+font-family:'Trebuchet MS', sans-serif;
+}
+
+</style>
+<body>
+    <br>
+    <header><b> Welcome</b></header>
+
+    <div class="contain">   
+    <form align = "center" action="/" method="POST">
+    {% csrf_token %}
+            <label for="username" >Username: </label>
+            <input type="text" id="username" name="username" required><br><br>
+           <label for="password">Password: </label>
+            <input type="password" id="password" name="password" required><br><br>
+            <h3> New here? Please register yourself. </h3>
+            <a href="{% url 'register' %}" class="button">Register</a>
+            
+            
+            
+            
+            
+            <input type="submit"  >
+
+            
+          </form>
+    </div>
+    <div>
+     {% for message in messages %}
+     <h1 style="color:white;text-align:center;background-color:Black;"> {{message}} </h1>
+     {% endfor %}
+     </div>
+</body>
+
+</html>

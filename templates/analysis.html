@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>location for new business</title>
+
+
+    <link rel="stylesheet" href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.cs' %}">
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+<style>
+    body{
+        fill-opacity: unset;
+        background-image: url("{% static 'images/homepage.jpg'%}");
+        background-repeat: no-repeat;
+        
+    }
+</style>
+<body>
+    
+
+
+<header>
+
+    <a href="#" class="logo"><span>Location for </span>New Business</a>
+
+    <nav class="navbar">
+        <a href="{% url 'index' %}">home</a>
+        <a href="{% url 'index' %}">services</a>
+        <a href="#featured">featured</a>
+
+        <a href="#contact">contact</a>
+        
+    </nav>
+
+    <div class="icons">
+        <div id="menu-bars" class="fas fa-bars"></div>
+        <a href="" class="fas fa-heart"></a>
+        <a href="" class="fas fa-user" class="btn"></a>
+    </div>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+  
+    
+   
+    <form action="analysis" method='POST'>
+        
+        {% csrf_token %}
+        
+        
+
+        <div class="inputBox">
+            
+            
+            <label for="cuisine"><h1>Enter Cuisine:</h1></label>
+            <input type="text" name="cuisine" placeholder="" id="cuisine" required >
+            
+            
+        </div>
+
+        <input type="submit" value="click for analysis" class="btn">
+
+    </form>
+
+</section>
+<h1>{{y}}</h1>
+<h1>{{y1}}</h1>
+<h1>{{y2}}</h1>
+<h1>{{y3}}</h1>
+<h1>{{y4}}</h1>
+<h1>{{y5}}</h1>
+<h1>{{y6}}</h1>
+
+<h1 style="text-align: center;">Rating type against the Count of restaurants </h1>
+<img src="{% static 'images/dataframe1.png' %}" style="display: block;
+margin-left: auto;
+margin-right: auto;" alt="" class="center">
+<br><br><br>
+<h1 style="text-align: center;">Best places according to the cuisine provided</h1>
+<img src="{% static 'images/dataframe2.png' %}" style="display: block;
+margin-left: auto;
+margin-right: auto;" alt="" class="center"><br><br><br>
+<h1 style="text-align: center;">Region wise prices based on Cuisine type</h1>
+<img src="{% static 'images/dataframe3.png' %}" style="display: block;
+margin-left: auto;
+margin-right: auto;" alt="" class="center"><br><br><br>
+
+<img src="{% static 'images/dataframe4.png' %}" style="display: block;
+margin-left: auto;
+margin-right: auto;" alt="" class="center"><br><br><br>
+<h1 style="text-align: center;">Region wise distribution of restaurants with their price</h1>
+<img src="{% static 'images/dataframe5.png' %}" style="display: block;
+margin-left: auto;
+margin-right: auto;" alt="" class="center"><br><br><br>
+<h1 style="text-align: center;" >Cuisine type vs Prices</h1>
+
+<img src="{% static 'images/dataframe6.png' %}" style="display: block;
+margin-left: auto;
+margin-right: auto;" alt="" class="center"><br><br><br>
+<h1 style="text-align: center;">Region Against Prices</h1>
+<img src="{% static 'images/dataframe7.png' %}" style="display: block;
+margin-left: auto;
+margin-right: auto;" alt="" class="center"><br><br><br>
+<h1 style="text-align: center;">Region Against Prices with respect to cuisine</h1>
+<img src="{% static 'images/dataframe8.png' %}" style="display: block;
+margin-left: auto;
+margin-right: auto;" alt="" class="center"><br><br><br>
+<!-- home section ends -->
+
+
+<!-- services section starts  -->
+
+
+
+<!-- services section ends -->
+
+
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="footer-container">
+
+        <div class="box-container">
+
+            <!-- <div class="box">
+                <h3>branch location</h3>
+                <a href="#">india</a>
+                <a href="#">USA</a>
+                <a href="#">france</a>
+                <a href="#">russia</a>
+                <a href="#">japan</a>
+            </div>  -->
+            
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="{% url 'index' %}">home</a>
+                <a href="{% url 'index' %}">services</a>
+                <a href="{% url 'index' %}">featured</a>
+                
+                <a href="{% url 'index' %}">contact</a>
+            </div> 
+
+            
+
+            <!-- <div class="box">
+                <h3>follow us</h3>
+                <a href="https://www.facebook.com/">facebook</a>
+                <a href="#">twitter</a>
+                <a href="#">instagram</a>
+                <a href="#">linkedin</a>
+            </div>  -->
+
+        </div>
+
+        <div class="credit">created by <span> The Team </span> | all rights reserved! </div>
+
+    </div>
+
+</section>
+
+<!-- footer section ends -->
+
+
+<!-- javascript part  -->
+<script>
+
+let menu = document.querySelector('#menu-bars');
+let navbar = document.querySelector('.navbar');
+
+menu.onclick = () =>{
+    navbar.classList.toggle('active');
+    menu.classList.toggle('fa-times');
+}
+
+window.onscroll = () =>{
+    navbar.classList.remove('active');
+    menu.classList.remove('fa-times');
+}
+
+
+</script>
+
+</body>
+</html>

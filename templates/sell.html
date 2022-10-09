@@ -1,0 +1,211 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>location for new business</title>
+
+
+    <link rel="stylesheet" href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.cs' %}">
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+<body>
+    
+
+
+<header>
+
+    <a href="#" class="logo"><span>Location for </span>New Business</a>
+
+    <nav class="navbar">
+        <a href="{% url 'index' %}">home</a>
+        <a href="{% url 'index' %}">services</a>
+        <a href="{% url 'index' %}">featured</a>
+        
+        
+        <a href="{% url 'index' %}">contact</a>
+        
+    </nav>
+
+    <div class="icons">
+        <div id="menu-bars" class="fas fa-bars"></div>
+        <a href="" class="fas fa-heart"></a>
+        <a href="" class="fas fa-user" class="btn"></a>
+    </div>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+  
+    
+   
+    <form action="sell" method='POST'>
+        {% csrf_token %}
+        <div class="buttons-container">
+            <a href="#" class="btn">for buying</a>
+            
+        </div>
+
+        <div class="inputBox">
+            <label for="address"><h1>Address:</h1></label>
+            <input type="text" name="address" placeholder="" id="address">
+            <label for="mintotprice"><h1>Min Price:</h1></label>
+            <input type="number" name="mintotprice" placeholder="" id="mintotprice">
+            <label for="maxtotprice"><h1>Max Price:</h1></label>
+            <input type="number" name="maxtotprice" placeholder="" id="maxtotprice">
+            
+            
+            
+           
+            <label for="minsuperarea"><h1>Min Super Area:</h1></label>
+            <input type="number" name="minsuperarea" placeholder="(in sqft)" id="minsuperarea">
+            <label for="maxsuperarea"><h1>Max Super Area:</h1></label>
+            <input type="number" name="maxsuperarea" placeholder="(in sqft)" id="maxsuperarea">
+            
+        </div>
+
+        <input type="submit" value="search property" class="btn">
+
+    </form>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- services section starts  -->
+
+
+
+<!-- featured section starts  -->
+
+<section class="featured" id="featured">
+
+ 
+
+    <div class="box-container">
+    
+                {% for sell in sells %}
+       
+        <div class="box">
+            <div class="image-container">
+                <img src="{{sell.img }}" alt="">
+                
+                
+                    
+                
+            </div>
+            <div class="content">
+                <div class="price">
+                    <h3>₹{{sell.totprice}}/mo</h3>
+                    
+                </div>
+                <div class="location">
+                    <h3>{{sell.ProjectName}}</h3>
+                    <p>{{sell.Address}}</p>
+                </div>
+                <div class="details">
+                    <h3> <i class="fas fa-expand"></i> {{sell.Superarea}} sqft </h3>
+                    <h3> <i class="fas fa-bed"></i> {{sell.Furnishedstatus}} </h3>
+                    <h3> <i class="fas fa-bath"></i> {{sell.Overlooking}} </h3>
+                </div>
+                <div class="buttons">
+                    
+                    <a href="{{sell.link}}" class="btn">view details</a>
+                </div>
+            </div>
+        </div>
+     
+      {% endfor %}
+
+       
+        
+
+        
+
+    </div>
+    
+</section>
+
+<!-- featured section ends -->
+
+
+
+
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="footer-container">
+
+        <div class="box-container">
+
+            <!-- <div class="box">
+                <h3>branch location</h3>
+                <a href="#">india</a>
+                <a href="#">USA</a>
+                <a href="#">france</a>
+                <a href="#">russia</a>
+                <a href="#">japan</a>
+            </div>  -->
+            
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="{% url 'index' %}">home</a>
+                <a href="{% url 'index' %}">services</a>
+                <a href="{% url 'index' %}">featured</a>
+                <a href="{% url 'index' %}">agents</a>
+                <a href="{% url 'index' %}">contact</a>
+            </div> 
+
+            
+
+            <!-- <div class="box">
+                <h3>follow us</h3>
+                <a href="https://www.facebook.com/">facebook</a>
+                <a href="#">twitter</a>
+                <a href="#">instagram</a>
+                <a href="#">linkedin</a>
+            </div>  -->
+
+        </div>
+
+        <div class="credit">created by <span> The Team </span> | all rights reserved! </div>
+
+    </div>
+
+</section>
+
+<!-- footer section ends -->
+
+
+<!-- javascript part  -->
+<script>
+
+let menu = document.querySelector('#menu-bars');
+let navbar = document.querySelector('.navbar');
+
+menu.onclick = () =>{
+    navbar.classList.toggle('active');
+    menu.classList.toggle('fa-times');
+}
+
+window.onscroll = () =>{
+    navbar.classList.remove('active');
+    menu.classList.remove('fa-times');
+}
+
+
+</script>
+
+</body>
+</html>
